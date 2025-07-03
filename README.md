@@ -50,8 +50,21 @@ ENV RATE_LIMIT_FRACTION_LEFT=0.3
 5. Run ``streamlit run main.py``
 
 
+
 ## Customization
 The KIM Chatbot can be customized in terms of API endpoints for serving language models and configuring models via system prompts for instance.
+
+### Creating new models
+New models can be created by entering the admin mode by adding the get parameter ``auth=banana`` to the URL, for instance ``http://localhost:8501?auth=banana``.
+
+After name and subject have been entered, the admin panel will then appear on the second page on the right. Models can be created there. For model creation the following must be provided:
+* select the endpoint where the model is served
+* select an available model from the endpoint
+* a system prompt for the model
+* a summary prompt (optional)
+
+Configured models are then saved persistently in the ``code/models.json`` file.
+
 
 
 ### Endpoints
@@ -64,10 +77,10 @@ New endpoints can be defined in the module ``code/endpoints.py`` by creating a c
   * ``messages``: A list with the potential existing messages in the conversation.
   * ``model``: a string identifying the model defined in models.json (see below).
   * ``temperature``: optional, adjusts the temperature for the LLM in $[0,1]$. It controls the influence of randomness of a model's output. The higher the more random.
-  * ``top_p``: optional, adjusts the diversity for the LLM $[0,1]$. Defines the percentage of top tokens considered. The higher the more variation.
+  * ``top_p``: optional, adjusts the diversity for the LLM in $[0,1]$. Defines the percentage of top tokens considered. The higher the more variation.
 * ``model_list``: returns a list of all configured models for this endpoint.
 
-In addition, endpoints must be configured in the ``code/endpoints.json`` in the form:
+In addition, endpoints must be configured in the ``code/endpoints.json`` file in the form:
 
 ```
 [
@@ -79,10 +92,6 @@ In addition, endpoints must be configured in the ``code/endpoints.json`` in the 
   }
 ]
 ```
-
-
-### Creating new models
-
 
 
 ## Code
