@@ -49,5 +49,27 @@ ENV RATE_LIMIT_FRACTION_LEFT=0.3
 ```
 5. Run ``streamlit run main.py``
 
+
+## Customization
+The KIM Chatbot can be customized in terms of API endpoints for serving language models and configuring models via system prompts for instance.
+
+
+### Endpoints
+At the moment, two enpoints are implemented:
+* [Academic Cloud](https://academiccloud.de/services/chatai/)
+* [Ollama](https://ollama.com/)
+
+New endpoints can be defined in the module ``code/endpoints.py`` by creating a class that implements the abstract baseclass ``Endpoint``. This approach requires endpoint classes to implement the methods:
+* ``chat(messages, model:str, temperature:float, top_p:float)``: is used to interact with a language model served by the endpoint. It returns an iterator returning the tokens from the language model. The parameters are:
+  * ``messages``: A list with the potential existing messages in the conversation.
+  * ``model``: a string identifying the model defined in models.json (see below).
+  * ``temperature``: optional, adjusts the temperature for the LLM in $[0,1]$. It controls the influence of randomness of a model's output. The higher the more random.
+  * ``top_p``: optional, adjusts the diversity for the LLM $[0,1]$. Defines the percentage of top tokens considered. The higher the more variation.
+* ``model_list``: returns a list of all configured models for this endpoint.
+
+### Creating new models
+
+
+
 ## Code
 The code can be found in ``code/``. We will soon provide a more detailed documentation of the code and its modules here.
