@@ -67,6 +67,20 @@ New endpoints can be defined in the module ``code/endpoints.py`` by creating a c
   * ``top_p``: optional, adjusts the diversity for the LLM $[0,1]$. Defines the percentage of top tokens considered. The higher the more variation.
 * ``model_list``: returns a list of all configured models for this endpoint.
 
+In addition, endpoints must be configured in the ``code/endpoints.json`` in the form:
+
+```
+[
+  {
+    "name": "<endpoint name>",
+    "endpoint": "https://url-to-endpoint",
+    "type": "openai|ollama",
+    "api_key": "<api-key>"
+  }
+]
+```
+
+
 ### Creating new models
 
 
