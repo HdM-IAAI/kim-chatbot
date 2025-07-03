@@ -34,7 +34,7 @@ The KIM-Chatbot can be run either by using the (1) image from dockerhub, (2) bui
 
 ### (3) Running the application with Python directly
 
-1. Install Python $\ge$ 3.11 .#
+1. Install Python $\ge$ 3.11 .
 2. Navigate to ``code/`` .
 3. Install additionally required modules via: ``pip install -r requirements.txt`` .
 4. Create the following environment variables:
