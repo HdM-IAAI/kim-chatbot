@@ -1,6 +1,8 @@
 # KIM Chatbot
 
-This is the repository for the KIM Chatbot, an LLM-driven asisstant for the reflection of study subjects. It was developed in the <PROJECT?> in cooperation with the IAAI at HdM from 2024-2025.
+This is the repository for the KIM Chatbot, an LLM-driven asisstant for the reflection of study subjects. It was developed as part of the project "KI-Coach – Ein digitaler Reflexionshelfer für Studierende" in cooperation with the IAAI at HdM from 2024-2025. The project was financed by the Stifterverband and the Ministry of Science, Research and Arts Baden-Württemberg as part of the program [Fellowships für Innovationen in der digitalen Lehre Baden-Württemberg](https://www.stifterverband.org/bwdigifellows).
+
+For details see the [project description](https://www.stifterverband.org/bwdigifellows/2024_seidl_pfeffer).
 
 <p align="center">
   <img src="doc/img/kim.png" alt="grafik" width="420"/>
