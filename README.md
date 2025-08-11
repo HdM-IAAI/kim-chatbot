@@ -56,17 +56,34 @@ ENV RATE_LIMIT_FRACTION_LEFT=0.3
 ## Customization
 The KIM Chatbot can be customized in terms of API endpoints for serving language models and configuring models via system prompts for instance.
 
-### Creating new models
-New models can be created by entering the admin mode by adding the get parameter ``auth=banana`` to the URL, for instance ``http://localhost:8501?auth=banana``.
+### Config mode
+We do not support user authentication. You can set an ``"admin_token"`` in the gui_config.json. This token can be entered to activate the config mode. 
 
-After name and subject have been entered, the admin panel will then appear on the second page on the right. Models can be created there. For model creation the following must be provided:
+### Creating new models
+Activate config mode and create, update and delete models. For model creation the following must be provided:
 * select the endpoint where the model is served
-* select an available model from the endpoint
+* select an available base model from the endpoint
 * a system prompt for the model
 * a summary prompt (optional)
-
+* temperature value (optional)
+* top_p value (optional)
+* a model name
+* default: if it should be used as default model
 Configured models are then saved persistently in the ``code/models.json`` file.
 
+Example of one model entry in ``code/models.json``:
+``` json
+{
+    "endpoint_name": "academiccloud",
+    "name": "Kim 2.0",
+    "model": "qwen2.5-vl-72b-instruct",
+    "temperature": 1.7,
+    "top_p": 0.1,
+    "system_prompt": "your system prompt for chatting",
+    "summary_prompt": "your summary prompt which creates a summary of your chat history",
+    "default": true
+}
+```
 
 
 ### Endpoints
@@ -84,7 +101,7 @@ New endpoints can be defined in the module ``code/endpoints.py`` by creating a c
 
 In addition, endpoints must be configured in the ``code/endpoints.json`` file in the form:
 
-```
+```json
 [
   {
     "name": "<endpoint name>",
@@ -94,6 +111,15 @@ In addition, endpoints must be configured in the ``code/endpoints.json`` file in
   }
 ]
 ```
+
+### Save chat history
+``"save_buttons_visible"`` can be set to true (default: false). This enables two save buttons which a user can use to store their chat history. Meta data is stored automatically. 
+
+### Happiness buttons
+``"happiness_buttons_visible"`` can be set to true (default: false). This enables two buttons where a user can indicate how they currently feel about the chatbots responses.
+
+### Summary
+``"summary_visible"`` can be set to true (default: false). This enables a second model with a configured summary prompt. This summary-model is intended to create a summary, achievement and goals based on the chat history. It will be displayed on the left sidebar.
 
 
 ## Code
