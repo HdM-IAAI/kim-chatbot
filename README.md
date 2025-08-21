@@ -87,7 +87,7 @@ Example of one model entry in ``code/models.json``:
 
 
 ### Endpoints
-At the moment, two enpoints are implemented:
+At the moment, two endpoints are implemented:
 * [Academic Cloud](https://academiccloud.de/services/chatai/)
 * [Ollama](https://ollama.com/)
 
